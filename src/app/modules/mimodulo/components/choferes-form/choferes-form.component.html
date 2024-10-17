@@ -1,0 +1,95 @@
+<h4 class="mb-3">Chofer</h4>
+
+<form [formGroup]="form" (ngSubmit)="enviarForm()">
+    <div class="form-control-group col-sm-6">
+        <label for="nombre" class="form-label">Nombre</label>
+        <input type="text" class="form-control" formControlName="nombre" placeholder="" value="" required>
+        <ng-container *ngIf="nombre?.invalid && nombre?.touched">
+            <small *ngIf="nombre?.hasError('pattern')" class="text-danger">
+                Solo debe contener letras
+            </small>                    
+            <small *ngIf="nombre?.hasError('required')" class="text-danger">
+                El campo nombre es obligatorio
+            </small>
+        </ng-container>
+    </div>
+    <div class="row g-3">
+        <div class="form-control-group col-sm-6">
+            <label for="dni" class="form-label">DNI</label>
+            <input type="text" class="form-control" formControlName="dni" placeholder="">
+            <!-- <input type="text" class="form-control" formControlName="nrolicencia" placeholder=""> -->
+            <ng-container *ngIf="dni?.invalid && dni?.touched">
+                <small *ngIf="dni?.hasError('pattern')" class="text-danger">
+                    Solo se permiten números.
+                </small>
+                <small *ngIf="dni?.hasError('required')" class="text-danger">
+                El campo nro licencia es obligatorio
+                </small>
+                <small *ngIf="dni?.hasError('minlength')" class="text-danger">
+                    Debe tener al menos 7 caracteres.
+                    </small>
+            </ng-container>
+        </div>
+
+
+        <div class="form-control-group col-12">
+            <label for="edad" class="form-label">Edad</label>                                  
+            <input type="number" class="form-control" formControlName="edad" placeholder="" required>
+            <ng-container *ngIf="edad?.invalid && edad?.touched">
+                <small *ngIf="edad?.hasError('min') || edad?.hasError('max')" class="text-danger">
+                    Debe ser entre 18 y 50 años de edad
+                    </small>
+                    <small *ngIf="edad?.hasError('required')" class="text-danger">
+                    El campo edad es obligatorio
+                    </small>
+            </ng-container> 
+        
+        </div>
+
+        <div class="form-control-group col-12">
+                <label for="nrolicencia" class="form-label">NroLicencia</label>
+                <input type="text" class="form-control" formControlName="nrolicencia" placeholder="">
+                <ng-container *ngIf="nrolicencia?.invalid && nrolicencia?.touched">
+                    <small *ngIf="nrolicencia?.hasError('pattern')" class="text-danger">
+                        Solo se permiten números.
+                    </small>
+                    <small *ngIf="nrolicencia?.hasError('required')" class="text-danger">
+                    El campo nro licencia es obligatorio
+                    </small>
+                    <small *ngIf="nrolicencia?.hasError('minlength')" class="text-danger">
+                        Debe tener al menos 7 caracteres.
+                        </small>
+                </ng-container>
+        </div>
+       
+        <div class="form-control-group col-12">
+            <label for="licenciaprofesional" class="form-label">Tiene Licencia Profecional?</label>            
+            <div class="form-check">
+              <input type="radio" class="form-check-input" id="licenciaprofesionalSi" formControlName="licenciaprofesional" [value]="true">
+              <label for="licenciaprofesionalSi" class="form-check-label">Sí</label>
+            </div>            
+            <div class="form-check">
+              <input type="radio" class="form-check-input" id="licenciaprofesionalNo" formControlName="licenciaprofesional" [value]="false">
+              <label for="licenciaprofesionalNo" class="form-check-label">No</label>
+            </div>            
+            <ng-container *ngIf="licenciaprofesional?.invalid && licenciaprofesional?.touched">
+              <small *ngIf="licenciaprofesional?.hasError('required')" class="text-danger">
+                El campo es obligatorio
+              </small>
+            </ng-container>
+          </div>  
+          <div class="form-control-group col-12">
+            <label for="pais" class="form-label" placeholder="País de origen">Pais <span class="text-muted">(Selecciones un país de la lista)</span></label>
+            <input type="text" class="form-control" formControlName="pais" [value]="this.selectedPais" readonly>
+            <ng-container *ngIf="pais?.invalid && pais?.touched">                                
+                <small *ngIf="pais?.hasError('required')" class="text-danger">                            
+                    El campo pais es obligatorio
+                </small>
+            </ng-container>
+        </div>                                    
+    </div> 
+
+    <hr class="my-4">
+
+    <button [disabled]="form.invalid" class="w-100 btn btn-primary btn-lg" type="submit">Alta Chofer</button>            
+</form>

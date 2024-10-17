@@ -1,0 +1,27 @@
+<body class="text-center">
+    <main class="form-signin">
+        <form>
+        <!-- <img class="mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> -->
+        <h1 class="h3 mb-3 fw-normal">Login</h1>
+    
+        <div class="form-floating">                
+            <input [(ngModel)]="userMail" class="form-control" placeholder="Usuario - Email" type="email" id="usuario" name="usuario" required>
+            <label for="usuario">Usuario</label>
+        </div>
+        <div class="form-floating">
+            <input [(ngModel)]="userPWD" class="form-control"  placeholder="Contraseña" type="password" id="floatingPassword" name="password" required>                
+            <label for="floatingPassword">Password</label>
+        </div>
+    
+        <!-- <div class="checkbox mb-3">
+            <label>
+            <input type="checkbox" value="remember-me"> Remember me
+            </label>
+        </div> -->   
+        <button (click)="Login()" class="btn form-control mb-5">Login</button>     
+        <button (click)="AccesoRapidoEmpleado()" class="btn form-control mb-5">Acceso Rapido Empleado</button>
+        <button (click)="AccesoRapidoAdmin()" class="btn form-control mb-5">Acceso Rapido Admin</button>
+        <!-- <button class="w-100 btn btn-lg btn-primary" (click)="enviar()">Enviar</button>             -->
+        </form>
+    </main>            
+</body>

@@ -6,19 +6,13 @@ import { ChoferesAltaComponent } from './components/choferes-alta/choferes-alta.
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ChoferesFormComponent } from './components/choferes-form/choferes-form.component';
 import { ChoferesPaisesComponent } from './components/choferes-paises/choferes-paises.component';
-import { ChoferesComponent } from './components/choferes/choferes.component';
-import { ChoferesTablaComponent } from './components/choferes-tabla/choferes-tabla.component';
-import { ChoferesDetalleComponent } from './components/choferes-detalle/choferes-detalle.component';
 
 
 @NgModule({
   declarations: [
    ChoferesAltaComponent,
    ChoferesFormComponent,
-   ChoferesPaisesComponent,
-   ChoferesComponent,
-   ChoferesTablaComponent,
-   ChoferesDetalleComponent
+   ChoferesPaisesComponent
   ],
   imports: [
     CommonModule,
@@ -30,10 +24,7 @@ import { ChoferesDetalleComponent } from './components/choferes-detalle/choferes
   exports:[
     ChoferesAltaComponent,
     ChoferesFormComponent,
-    ChoferesPaisesComponent,
-    ChoferesComponent,
-    ChoferesTablaComponent,
-    ChoferesDetalleComponent
+    ChoferesPaisesComponent
   ]
 })
 export class MimoduloModule { }

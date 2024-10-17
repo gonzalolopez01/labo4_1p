@@ -1,0 +1,31 @@
+<div class="container">
+    <main>
+      <div class="py-5 text-center">
+        <!-- <img class="d-block mx-auto mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> -->
+        <h2>Alta Choferes</h2>
+        
+      </div>
+  
+      <div class="row g-5">
+
+        <div class="col-md-5 col-lg-4 order-md-last">
+        <!-- TABLA PAISES -->
+          <app-choferes-paises [items]="paises" (showItem)="mostrarPais($event)"></app-choferes-paises>
+        </div>
+        <!-- FORM CHOFERES -->
+        <div class="col-md-7 col-lg-8">
+            <app-choferes-form [selectedPais]="selectedPais"></app-choferes-form>
+
+        </div>
+      </div>
+    </main>
+  
+    <footer class="my-5 pt-5 text-muted text-center text-small">
+      <p class="mb-1">&copy; 2017–2021 Company Name</p>
+      <ul class="list-inline">
+        <li class="list-inline-item"><a href="#">Privacy</a></li>
+        <li class="list-inline-item"><a href="#">Terms</a></li>
+        <li class="list-inline-item"><a href="#">Support</a></li>
+      </ul>
+    </footer>
+</div>

@@ -2,7 +2,7 @@
     <form class="container-fluid justify-content-start">
       <button class="btn btn-outline-success me-2" type="button" routerLinkActive="active" routerLink="home">Home</button>
       <button class="btn btn-sm btn-outline-secondary" type="button" routerLinkActive="active" [routerLink]="'/abm/alta'">Alta Chofer</button>
-      <button class="btn btn-sm btn-outline-secondary" type="button" routerLinkActive="active" [routerLink]="'/abm/choferes'">Choferes</button>      
+      <button class="btn btn-sm btn-outline-secondary" type="button" routerLinkActive="active" [routerLink]="'/abm/repartidores'">Choferes</button>      
       <!-- <button class="btn btn-sm btn-outline-secondary" type="button" routerLinkActive="active" [routerLink]="'/login'">Login</button> -->
       
       <div *ngIf="!auth.currentUser?.email; else elseBlock;">  
