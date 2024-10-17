@@ -1,0 +1,31 @@
+<nav class="navbar bg-body-tertiary">
+    <form class="container-fluid justify-content-start">
+      <button class="btn btn-outline-success me-2" type="button" routerLinkActive="active" routerLink="home">Home</button>
+      <button class="btn btn-sm btn-outline-secondary" type="button" routerLinkActive="active" [routerLink]="'/abm/alta'">Alta Repartidor</button>
+      <button class="btn btn-sm btn-outline-secondary" type="button" routerLinkActive="active" [routerLink]="'/abm/repartidores'">Repartidores</button>
+      <button class="btn btn-sm btn-outline-secondary" type="button" routerLinkActive="active" [routerLink]="'/abm/helados'">Helados</button>
+      <!-- <button class="btn btn-sm btn-outline-secondary" type="button" routerLinkActive="active" [routerLink]="'/login'">Login</button> -->
+      
+      <div *ngIf="!auth.currentUser?.email; else elseBlock;">  
+        <div class="div-botones d-flex">
+            <div>
+              <button class="btn btn-sm btn-outline-secondary" type="button" routerLinkActive="active" [routerLink]="'/login'">Login</button>                
+            </div>
+            <!-- <div>
+                <button class="btn btn-primary texto-blanco silkscreen-regular" type="button" [routerLink]="'./registro'">Resgistrarse</button>            
+            </div>                       -->
+        </div>
+      </div>
+                              
+      <ng-template #elseBlock>       
+          <div class="div-botones d-flex">                    
+              <!-- <button class="btn btn-primary " type="button" [routerLink]="'./login'">Logout</button> -->
+              <!-- <button (click)="CloseSession()" class="boton btn texto-blanco mx-2 mt-3">Logout</button>                                -->
+              <button (click)="CloseSession()" class="btn btn-sm btn-outline-secondary" type="button" routerLinkActive="active" [routerLink]="'/login'">Cerrar Sesión</button>                
+              <p class="mt-2 text-center texto-blanco">Usuario: {{auth.currentUser?.email}}</p>
+
+          </div>     
+      </ng-template>                  
+
+    </form>
+  </nav>
