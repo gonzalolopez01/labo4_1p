@@ -1,0 +1,7 @@
+.mensaje{
+    background-color: rgba(0, 0, 0, 0.85); /* Fondo oscuro semi-transparente */
+  color: #fff;                          /* Color del texto */
+  padding: 10px;                        /* Espaciado interno */
+  border-radius: 5px;                   /* Bordes redondeados */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Sombra para mejor visibilidad */
+}

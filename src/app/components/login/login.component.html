@@ -1,4 +1,4 @@
-<body class="text-center">
+<body class="text-center d-flex flex-column">
     <main class="form-signin">
         <form>
         <!-- <img class="mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> -->
@@ -24,4 +24,11 @@
         <!-- <button class="w-100 btn btn-lg btn-primary" (click)="enviar()">Enviar</button>             -->
         </form>
     </main>            
+    <div *ngIf="showToast" class="mensaje" >
+        <div class="d-flex">                    
+        <app-mensaje [mensaje]="toastMessage"></app-mensaje>
+        </div>        
+    </div>
 </body>
+
+  

@@ -56,4 +56,13 @@
     border-top-left-radius: 0;
     border-top-right-radius: 0;
   }
+
+  .mensaje {
+    position: fixed; /* Fija la posición del elemento en la pantalla */
+    bottom: 50px;       /* Ajusta la distancia desde la parte superior */
+    right: 50%;     /* Ajusta la distancia desde el borde derecho */
+    transform: translateX(50%);
+    z-index: 1050;   /* Asegura que esté por encima de otros elementos */
+    pointer-events: none; /* Evita que interfiera con los clics en otros elementos */
+  }
   

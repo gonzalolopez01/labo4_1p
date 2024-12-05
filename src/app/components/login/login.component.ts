@@ -1,14 +1,18 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Auth, signInWithEmailAndPassword, signOut } from '@angular/fire/auth';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from '../../services/login.service';
 
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { SnackBarComponent } from '../snack-bar/snack-bar.component';
+import { MensajeComponent } from '../mensaje/mensaje.component';
+
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, MensajeComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
@@ -22,6 +26,9 @@ export class LoginComponent {
   loggedUser:any;
   cargado = true;
   msjError = "";
+
+  showToast = false;  
+  toastMessage:string = '';  
 
   constructor(private router: Router, public auth: Auth, private usuarioService: LoginService){ } 
 
@@ -46,13 +53,15 @@ export class LoginComponent {
       // Manejo de errores
       this.msjError = this.getErrorMessage(e.code);
       console.error("Error al iniciar sesión:", e);
+      this.showToastMessage(this.msjError);      
+      
     }
   }
   
   // Método auxiliar para manejar los mensajes de error
   private getErrorMessage(errorCode: string): string {
     const errorMessages: { [key: string]: string } = {
-      "auth/invalid-credential": "Email inválido",
+      "auth/invalid-credential": "Error de credenciales",
       "auth/email-already-in-use": "El email ya está en uso",
       "auth/invalid-email": "Formato de email inválido",
       // Otros errores específicos pueden añadirse aquí
@@ -76,5 +85,20 @@ export class LoginComponent {
   AccesoRapidoEmpleado() {
     this.userMail = "empleado@gmail.com";
     this.userPWD = "123321";
+  }
+
+  showToastMessage(message: string): void {
+    this.toastMessage = message;
+    this.showToast = true;
+
+
+    setTimeout(() => {
+      this.closeToast();
+    }, 3000);  
+  }
+
+  
+  closeToast(): void {
+    this.showToast = false;
   }
 }
