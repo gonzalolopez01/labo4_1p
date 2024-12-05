@@ -29,16 +29,20 @@ export class FormTerminosycondicionesComponent {
     this.form = this.fb.group(
       {
         aceptar: [null, Validators.required], 
-        email: ['', [Validators.required, Validators.email], 
-        [usuarioExisteAsyncValidator(this.auth)]]        
+        edad: [null, [Validators.min(18), Validators.max(65), Validators.pattern('^[0-9]*$'), Validators.required]],
+        // email: ['', [Validators.required, Validators.email], 
+        // [usuarioExisteAsyncValidator(this.auth)]]        
       }
     );
   }
-  get email() {
-    return this.form.get('email');
-  }  
+  // get email() {
+  //   return this.form.get('email');
+  // }  
   get aceptar() {
     return this.form.get('aceptar');
+  }  
+  get edad() {
+    return this.form.get('edad');
   }  
 
   async registrarUsuario(): Promise<void>{
@@ -55,7 +59,7 @@ export class FormTerminosycondicionesComponent {
         usuario = await this.usuarioService.GetUserPorEmail(email);        
       }
       let values = this.form.value;
-      await this.usuarioService.ModificarUsuario(usuario.id, {esHabilitado : values.aceptar});
+      await this.usuarioService.ModificarUsuario(usuario.id, {esHabilitado : values.aceptar, edad : values.edad});
       usuario = await this.usuarioService.GetUserPorEmail(email);
       this.usuarioService.setUsuario(usuario);
       console.log('Usuario registrado y datos guardados:', usuario);

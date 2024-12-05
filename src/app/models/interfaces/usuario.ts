@@ -4,6 +4,7 @@ export interface Usuario {
     apellido: string;
     email: string;
     password: string;
-    tipo: 'admin' | 'empleado';    
+    tipo: 'admin' | 'empleado';
+    edad: number;
     esHabilitado: boolean;
 }

@@ -17,7 +17,7 @@
             </ng-container>
         </div>
         <!-- Email -->
-        <div class="form-group row">
+        <!-- <div class="form-group row">
             <label for="email"><strong>Email</strong></label>
             <input type="text" class="form-control" formControlName="email" required>
             <ng-container *ngIf="email?.invalid && email?.touched">
@@ -31,7 +31,25 @@
                 El campo es obligatorio.
             </small>
             </ng-container>
-        </div>
+        </div> -->
+        <div class="form-group row">
+            <!-- Edad -->
+            <div class="col-md-6">
+              <label for="edad"><strong>Edad</strong></label>
+              <input type="text" class="form-control" formControlName="edad" required>
+              <ng-container *ngIf="edad?.invalid && edad?.touched">              
+                  <small *ngIf="edad?.hasError('min') || edad?.hasError('max')" class="text-danger">
+                      Debe ser entre 18 y 65 años de edad
+                  </small>
+                  <small *ngIf="edad?.hasError('required')" class="text-danger">
+                    El campo edad es obligatorio
+                  </small>
+                  <small *ngIf="edad?.hasError('pattern')" class="text-danger">
+                    Formato invalido.
+                  </small>
+              </ng-container>           
+            </div>                     
+          </div>
         <button type="submit" class="btn btn-primary mt-2 form-control" [disabled]="form.invalid">Registrar</button>
     </form>
     <div *ngIf="showMensaje" class="mensaje" >
