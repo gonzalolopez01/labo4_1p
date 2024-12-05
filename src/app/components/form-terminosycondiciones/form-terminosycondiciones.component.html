@@ -1,0 +1,43 @@
+<div class="container">
+    <form [formGroup]="form" (ngSubmit)="enviarFormulario()">
+        <div class="form-control-group">
+            <label for="aceptar" class="form-label">Acepta Terminos y condiciones?</label>          
+            <div class="form-check">
+                <input 
+                    type="checkbox" 
+                    class="form-check-input" 
+                    id="aceptar" 
+                    formControlName="aceptar">
+                <label for="aceptar" class="form-check-label">Sí</label>
+            </div>            
+            <ng-container *ngIf="aceptar?.invalid && aceptar?.touched">
+                <small *ngIf="aceptar?.hasError('required')" class="text-danger">
+                    El campo es obligatorio
+                </small>
+            </ng-container>
+        </div>
+        <!-- Email -->
+        <div class="form-group row">
+            <label for="email"><strong>Email</strong></label>
+            <input type="text" class="form-control" formControlName="email" required>
+            <ng-container *ngIf="email?.invalid && email?.touched">
+            <small *ngIf="email?.hasError('noCoincide')" class="text-danger">
+                El email no coincide con el del usuario logueado.
+            </small>
+            <small *ngIf="email?.hasError('email')" class="text-danger">
+                Formato invalido.
+            </small>
+            <small *ngIf="email?.hasError('required')" class="text-danger">
+                El campo es obligatorio.
+            </small>
+            </ng-container>
+        </div>
+        <button type="submit" class="btn btn-primary mt-2 form-control" [disabled]="form.invalid">Registrar</button>
+    </form>
+    <div *ngIf="showMensaje" class="mensaje" >
+        <div class="d-flex">                    
+        <app-mensaje [mensaje]="message"></app-mensaje>
+        </div>        
+    </div>
+</div>
+  

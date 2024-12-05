@@ -1,0 +1,82 @@
+<div class="container">
+    <form [formGroup]="form" (ngSubmit)="enviarFormulario()">
+        <div class="form-group row">
+            <!-- Nombre -->
+            <div class="col-md-6">
+            <label for="nombre"><strong>Nombre</strong></label>
+            <input type="text" class="form-control" formControlName="nombre" required>
+            <ng-container *ngIf="nombre?.invalid && nombre?.touched">
+                <small *ngIf="nombre?.hasError('pattern')" class="text-danger">
+                    Solo debe contener letras
+                </small>                    
+                <small *ngIf="nombre?.hasError('required')" class="text-danger">
+                    El campo es obligatorio
+                </small>
+                <small *ngIf="nombre?.hasError('maxlength')" class="text-danger">
+                Debe tener como maximo 30 caracteres.
+                </small>
+            </ng-container>
+            </div>
+        
+            <!-- Apellido -->
+            <div class="col-md-6">
+            <label for="apellido"><strong>Apellido</strong></label>
+            <input type="text" class="form-control" formControlName="apellido" required>
+            <ng-container *ngIf="apellido?.invalid && apellido?.touched">
+                <small *ngIf="apellido?.hasError('pattern')" class="text-danger">
+                    Solo debe contener letras
+                </small>                    
+                <small *ngIf="apellido?.hasError('required')" class="text-danger">
+                    El campo es obligatorio
+                </small>
+                <small *ngIf="apellido?.hasError('maxlength')" class="text-danger">
+                Debe tener como maximo 30 caracteres.
+                </small>
+            </ng-container>            
+            </div>        
+        </div>
+
+        <div class="form-group row">
+            <!-- Email -->
+            <div class="col-md-6">
+            <label for="email"><strong>Email</strong></label>
+            <input type="text" class="form-control" formControlName="email" required>
+            <ng-container *ngIf="email?.invalid && email?.touched">
+                <small *ngIf="email?.hasError('email')" class="text-danger">
+                Formato invalido.
+                </small>
+                <small *ngIf="email?.hasError('required')" class="text-danger">
+                El campo es obligatorio.
+                </small>
+            </ng-container>
+            </div>
+        
+            <!-- Password -->
+            <div class="col-md-6">
+            <label for="password"><strong>Password</strong></label>
+            <input type="password" class="form-control" formControlName="password" required>
+            <ng-container *ngIf="password?.invalid && password?.touched">
+                <small class="text-danger">Formato inválido</small>
+                <small *ngIf="password?.hasError('required')" class="text-danger">
+                El campo es obligatorio.
+                </small>
+            </ng-container>
+            </div>
+        </div>
+        
+
+        <div class="form-group">
+            <label for="tipo"><strong>Tipo de Usuario</strong></label>    
+            <select formControlName="tipo" class="form-control">                    
+                <option value="">Seleccione...</option> 
+                <option value="admin">Admin</option>
+                <option value="empleado">Empleado</option>
+            </select>
+            <div *ngIf="form.get('tipo')?.invalid && form.get('tipo')?.touched" class="text-danger">
+            Seleccione un tipo de usuario.
+            </div>
+        </div>    
+        <button type="submit" class="btn btn-primary mt-2 form-control" [disabled]="form.invalid">Registrar</button>
+
+    </form>
+</div>

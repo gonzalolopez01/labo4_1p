@@ -8,6 +8,7 @@ export const guardTipoGuard: CanActivateFn = (route, state) => {
   if(usuarioService.usuarioLogeado.tipo === 'admin' && usuarioService.usuarioLogeado.esHabilitado){
     return true;
   }else{
+    console.log('no tiene permisos');
     return false;
   }
 

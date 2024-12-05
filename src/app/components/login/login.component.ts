@@ -33,21 +33,20 @@ export class LoginComponent {
   constructor(private router: Router, public auth: Auth, private usuarioService: LoginService){ } 
 
   async Login() {
-    try {
-      // Iniciar sesión con email y contraseña
+    try {      
       const res = await signInWithEmailAndPassword(this.auth, this.userMail, this.userPWD);
-  
-      // Obtener el usuario por email
+        
       const loggedUser = await this.usuarioService.GetUserPorEmail(this.userMail);
-  
-      // Guardar el usuario en el servicio
       
+      //paso usuario al service
       this.usuarioService.setUsuario(loggedUser);
       this.loggedUser = this.usuarioService.usuarioLogeado;
       console.log('usuario logeado obtenido desde el servicio',this.loggedUser);
   
       if(this.loggedUser.esHabilitado === false){
         this.router.navigate(['/terminosycondiciones']);
+      }else{
+        this.router.navigate(['/home']);
       }
     } catch (e: any) {
       // Manejo de errores
