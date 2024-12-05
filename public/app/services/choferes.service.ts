@@ -14,10 +14,10 @@ export class ChoferesService {
     this.GetItems();//traigo todo y lo mantengo actualizado - 1
   }
 
-  GuardarChofer(repartidor: Object){
+  GuardarChofer(chofer: Object){
     const col = collection(this.firestore, 'choferes');
         
-    const obj = { repartidor };
+    const obj = { chofer };
     
     return from(addDoc(col, obj));
   }

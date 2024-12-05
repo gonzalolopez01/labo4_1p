@@ -1,0 +1,64 @@
+<body>
+    
+    <div class="container py-3">
+      <header>    
+    
+        <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+          <h1 class="display-4 fw-normal">ABM Vehiculos</h1>
+          
+        </div>
+      </header>
+      
+      <main>
+        <h2 class="display-6 text-center mb-4">Vehículos</h2>
+    
+        <div class="table-responsive">
+          
+          <app-vehiculos-tabla [items]="vehiculos" (showItem)="tomarItem($event)" ></app-vehiculos-tabla>
+          <!-- <app-vehiculos-tabla [items]="vehiculos" ></app-vehiculos-tabla> -->
+    
+        </div>
+
+        <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+          <div class="col">
+            <div class="card mb-4 rounded-3 shadow-sm">
+              <div class="card-header py-3">
+                <h4 class="my-0 fw-normal">Alta</h4>
+              </div>
+    
+              <!-- FORM NUEVO -->
+              <app-vehiculos-alta (mandarVehiculo)="GuardarVehiculo($event)"></app-vehiculos-alta>
+                         
+            </div>
+          </div>
+          <div class="col">
+            <div class="card mb-4 rounded-3 shadow-sm">
+              <div class="card-header py-3">
+                <h4 class="my-0 fw-normal">Modificar</h4>
+              </div>
+              
+                <app-vehiculos-modificar [vehiculo]="selectedItem" (mandarVehiculo)="ModificarVehiculo($event)"></app-vehiculos-modificar>
+    
+    
+            </div>
+          </div>
+          <div class="col">
+            <div class="card mb-4 rounded-3 shadow-sm border-primary">
+              <div class="card-header py-3 text-white bg-primary border-primary">
+                <h4 class="my-0 fw-normal">Baja</h4>
+              </div>
+              <div class="card-body">
+                
+                <!-- <app-vehiculos-baja [vehiculo]="selectedItem" (bajaVehiculo)="BajaVehiculo()" ></app-vehiculos-baja> -->
+                <!-- <app-vehiculos-baja [vehiculo]="selectedItem"></app-vehiculos-baja> -->
+                <app-vehiculos-baja [vehiculo]="selectedItem"></app-vehiculos-baja>
+    
+              </div>
+            </div>
+          </div>
+        </div>
+           
+      </main>
+    </div>
+</body>
+    

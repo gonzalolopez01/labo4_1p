@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { ChoferesAltaComponent } from './components/choferes-alta/choferes-alta.component';
 import { ChoferesComponent } from './components/choferes/choferes.component';
 import { guardGuard } from '../../guards/guard.guard';
+import { VehiculosAbmComponent } from './components/vehiculos-abm/vehiculos-abm.component';
+import { guardTipoGuard } from '../../guards/guard-tipo.guard';
 
 
 const routes: Routes = [
@@ -12,6 +14,9 @@ const routes: Routes = [
   },
   {
     path: 'choferes', component:ChoferesComponent, canActivate:[guardGuard]
+  },
+  {
+    path: 'vehiculos', component:VehiculosAbmComponent, canActivate:[guardGuard, guardTipoGuard]
   }
 
 ];

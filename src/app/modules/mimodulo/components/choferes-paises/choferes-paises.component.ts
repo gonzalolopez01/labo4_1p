@@ -9,12 +9,12 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class ChoferesPaisesComponent {
   @Input() items!: any[];
-  @Output() showItem = new EventEmitter<any>(); //dispara evento
+  @Output() showItem = new EventEmitter<any>(); 
   selectedItemId: any;
 
-  show(pais: any, index: number) {//este evento es el que se dispara
+  show(pais: any, index: number) {
     this.selectedItemId = index;
-    //this.showItem.emit(pais);//se va a emitir este pais desde showItem con el evento ($event)
+   
     this.showItem.emit(pais.translations.spa.common);
     console.log(pais.translations.spa.common);
   }

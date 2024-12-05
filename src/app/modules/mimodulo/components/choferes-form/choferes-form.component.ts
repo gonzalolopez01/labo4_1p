@@ -41,7 +41,7 @@ export class ChoferesFormComponent {
 
 
   get dni() {
-    return this.form.get('documento');
+    return this.form.get('dni');
   }
   get nombre() {
     return this.form.get('nombre');

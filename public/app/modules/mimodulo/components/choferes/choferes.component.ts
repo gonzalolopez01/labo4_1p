@@ -40,11 +40,9 @@ export class ChoferesComponent {
 
   mostrarItem(item:Object){
     this.selectedItem = item;
-    console.log("item seleccionado: ",this.selectedItem);    
+    console.log(this.selectedItem);
  
-    this.keys = Object.keys(this.items[0].chofer);
-    console.log('keys: ',this.keys);
-    
+    this.keys = Object.keys(this.items[0].repartidor);
 
     //hago la parte de detalle pais
     this.paisService.GetDetallePais(this.selectedItem.chofer.pais).subscribe(

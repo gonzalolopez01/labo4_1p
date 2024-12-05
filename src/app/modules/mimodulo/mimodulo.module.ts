@@ -9,6 +9,12 @@ import { ChoferesPaisesComponent } from './components/choferes-paises/choferes-p
 import { ChoferesComponent } from './components/choferes/choferes.component';
 import { ChoferesTablaComponent } from './components/choferes-tabla/choferes-tabla.component';
 import { ChoferesDetalleComponent } from './components/choferes-detalle/choferes-detalle.component';
+import { ChoferesPaisChoferComponent } from "./components/choferes-pais-chofer/choferes-pais-chofer.component";
+import { VehiculosAbmComponent } from './components/vehiculos-abm/vehiculos-abm.component';
+import { VehiculosAltaComponent } from './components/vehiculos-alta/vehiculos-alta.component';
+import { VehiculosTablaComponent } from './components/vehiculos-tabla/vehiculos-tabla.component';
+import { VehiculosBajaComponent } from './components/vehiculos-baja/vehiculos-baja.component';
+import { VehiculosModificarComponent } from './components/vehiculos-modificar/vehiculos-modificar.component';
 
 
 @NgModule({
@@ -18,22 +24,34 @@ import { ChoferesDetalleComponent } from './components/choferes-detalle/choferes
    ChoferesPaisesComponent,
    ChoferesComponent,
    ChoferesTablaComponent,
-   ChoferesDetalleComponent
+   ChoferesDetalleComponent,
+   ChoferesPaisChoferComponent,
+   VehiculosAbmComponent,
+   VehiculosAltaComponent,
+   VehiculosTablaComponent,
+   VehiculosBajaComponent,
+   VehiculosModificarComponent
   ],
   imports: [
     CommonModule,
     MimoduloRoutingModule,
     ReactiveFormsModule,
     CommonModule,
-    FormsModule
-  ],
+    FormsModule,    
+],
   exports:[
     ChoferesAltaComponent,
     ChoferesFormComponent,
     ChoferesPaisesComponent,
     ChoferesComponent,
     ChoferesTablaComponent,
-    ChoferesDetalleComponent
+    ChoferesDetalleComponent,
+    ChoferesPaisChoferComponent,
+    VehiculosAbmComponent,
+    VehiculosAltaComponent,
+    VehiculosTablaComponent,
+    VehiculosBajaComponent,
+    VehiculosModificarComponent
   ]
 })
 export class MimoduloModule { }

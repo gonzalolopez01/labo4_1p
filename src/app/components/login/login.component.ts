@@ -19,52 +19,51 @@ export class LoginComponent {
   userPWD = "";
   tipo = "";
 
-  loggedUser = "";
+  loggedUser:any;
   cargado = true;
   msjError = "";
 
-  constructor(private router: Router, public auth: Auth, private loginService: LoginService){ } 
+  constructor(private router: Router, public auth: Auth, private usuarioService: LoginService){ } 
 
-  Login() {
-    signInWithEmailAndPassword(this.auth, this.userMail, this.userPWD).then((res) => {
-            
-      if (res.user.email !== null) this.loggedUser = res.user.email;
+  async Login() {
+    try {
+      // Iniciar sesión con email y contraseña
+      const res = await signInWithEmailAndPassword(this.auth, this.userMail, this.userPWD);
+  
+      // Obtener el usuario por email
+      const loggedUser = await this.usuarioService.GetUserPorEmail(this.userMail);
+  
+      // Guardar el usuario en el servicio
       
-      this.loginService.GetTipo(this.userMail);
-
-
-      //this.loginsReg.GetDataReg();
-      // this.router.navigate(['../']);
-      //this.router.navigate(['/home']);
-      
-    }).catch((e) => {//aca tambien se resolvió la promesa      
-
-      switch (e.code) {
-        case "auth/invalid-credential":
-          this.msjError = "Email invalido";
-          //this.toastCredenciales();
-          break;
-        case "auth/email-already-in-use":
-          
-          break;
-        case "auth/invalid-email":
-          //this.toastEmail();
-          break;
-        default:
-          //this.toastDefault();
-          //en vez de e.code poner algo asi como que no fue posible registrarse, como generico
-          //this.msjError = e.code
-          break;          
+      this.usuarioService.setUsuario(loggedUser);
+      this.loggedUser = this.usuarioService.usuarioLogeado;
+      console.log('usuario logeado obtenido desde el servicio',this.loggedUser);
+  
+      if(this.loggedUser.esHabilitado === false){
+        this.router.navigate(['/terminosycondiciones']);
       }
-    });
+    } catch (e: any) {
+      // Manejo de errores
+      this.msjError = this.getErrorMessage(e.code);
+      console.error("Error al iniciar sesión:", e);
+    }
   }
+  
+  // Método auxiliar para manejar los mensajes de error
+  private getErrorMessage(errorCode: string): string {
+    const errorMessages: { [key: string]: string } = {
+      "auth/invalid-credential": "Email inválido",
+      "auth/email-already-in-use": "El email ya está en uso",
+      "auth/invalid-email": "Formato de email inválido",
+      // Otros errores específicos pueden añadirse aquí
+    };
+  
+    return errorMessages[errorCode] || "No fue posible iniciar sesión. Intenta nuevamente.";
+  }
+
   CloseSession(){
     signOut(this.auth).then(() => {
-      //console.log(this.auth.currentUser?.email)
-      //aca podemos hacer el ruteo al login porque se cerro la sesion
-      //console.log("logout con exito");
-
-      //this.router.navigate(['../']);
+      this.usuarioService.clearUsuario();
       this.router.navigate(['/home']);
     //}).catch
     })

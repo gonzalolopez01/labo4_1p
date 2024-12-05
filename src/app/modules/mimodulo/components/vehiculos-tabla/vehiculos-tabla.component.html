@@ -1,0 +1,23 @@
+<table class="table table-striped table-bordered">
+    <thead>
+      <tr>        
+        <th style="width: 25%;">NOMBRE</th>
+        <th style="width: 25%;">TIPO</th>
+        <th style="width: 25%;">RUEDAS</th>
+        <th style="width: 25%;">CAPACIDAD</th>        
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let item of items; let i = index">
+        <tr [ngClass]="{'table-active': i === selectedItemId}" (click)="show(item, i)" style="cursor: pointer;">          
+          <td [ngStyle]="{color: getColor(i)}">{{item.nombre}}</td>
+          <td>{{item.tipo}}</td>
+          <td>{{item.ruedas}}</td>
+          <td>{{item.capacidad}}</td>          
+        </tr>
+        <!-- <tr>          
+            <td *ngFor="let key of keys; let i = index">{{item[key]}}</td>                      
+        </tr> -->
+      </ng-container>
+    </tbody>
+</table>

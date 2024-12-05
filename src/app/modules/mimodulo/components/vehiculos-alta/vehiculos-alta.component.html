@@ -1,0 +1,84 @@
+<form [formGroup]="form" (ngSubmit)="enviarVehiculo()">
+    <div class="d-flex flex-column align-items-center justify-content-center overflow-auto">
+
+        <div class="form-control-group">
+            <label for="nombre" class="form-label"><strong>Nombre</strong></label>
+            <input type="text" class="form-control" formControlName="nombre" placeholder="" value="" required>
+            <ng-container *ngIf="nombre?.invalid && nombre?.touched">
+                <small *ngIf="nombre?.hasError('pattern')" class="text-danger">
+                    Solo debe contener letras
+                </small>                    
+                <small *ngIf="nombre?.hasError('required')" class="text-danger">
+                    El campo nombre es obligatorio
+                </small>
+            </ng-container>
+        </div>
+        <!-- TIPO -->
+        <div class="form-control-group">            
+            <label for="tipo" class="form-label"><strong>Tipo</strong></label>
+          
+            
+            <div class="row">
+                <div class="form-check col">
+                    <input type="radio" class="form-check-input" id="tipoTerrestre" formControlName="tipo" value="terrestre">
+                    <label for="tipoTerrestre" class="form-check-label">Terrestre</label>
+                </div>
+          
+            
+                <div class="form-check col">
+                    <input type="radio" class="form-check-input" id="tipoAereo" formControlName="tipo" value="aereo">
+                    <label for="tipoAereo" class="form-check-label">Aereo</label>
+                </div>
+            
+                <div class="form-check col">
+                    <input type="radio" class="form-check-input" id="tipoMaritimo" formControlName="tipo" value="maritimo">
+                    <label for="tipoMaritimo" class="form-check-label">Maritimo</label>
+                </div>
+            </div>
+          
+            <!--error-->
+            <ng-container *ngIf="tipo?.invalid && tipo?.touched">
+              <small *ngIf="tipo?.hasError('required')" class="text-danger">
+                El campo es obligatorio
+              </small>
+            </ng-container>            
+        </div>
+
+        <div class="form-control-group">
+            <label for="ruedas" class="form-label"><strong>Ruedas </strong></label>
+            <input type="number" class="form-control" formControlName="ruedas" placeholder="" required>
+            
+            <ng-container *ngIf="ruedas?.invalid && ruedas?.touched">
+              <small *ngIf="ruedas?.hasError('min')" class="text-danger">
+                Numero minimo invalido
+              </small>
+              <small *ngIf="ruedas?.hasError('max')" class="text-danger">
+                Las ruedas deben ser como minimo 6
+              </small>
+              <small *ngIf="ruedas?.hasError('required')" class="text-danger">
+                El campo precio es obligatorio
+              </small>
+            </ng-container>
+        </div>
+
+        <div class="form-control-group">
+            <label for="capacidad" class="form-label"> <strong>Capacidad</strong> </label>
+            <input type="number" class="form-control" formControlName="capacidad" placeholder="" required>
+            
+            <ng-container *ngIf="capacidad?.invalid && capacidad?.touched">
+              <small *ngIf="capacidad?.hasError('min')" class="text-danger">
+                La capacidad debe ser como minimo 2
+              </small>
+              <small *ngIf="capacidad?.hasError('max')" class="text-danger">
+                La capacidad debe ser como maximo 100
+              </small>
+              <small *ngIf="capacidad?.hasError('required')" class="text-danger">
+                El campo peso es obligatorio
+              </small>
+            </ng-container>
+        </div>          
+    </div>
+    <div class="card-body">                        
+        <button [disabled]="form.invalid" type="submit" class="w-100 btn btn-lg btn-outline-primary">Crear</button>
+    </div>
+</form>

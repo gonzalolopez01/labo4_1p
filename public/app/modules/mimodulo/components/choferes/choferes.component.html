@@ -77,15 +77,15 @@
                             <ng-container *ngIf="detallePais">
                                 <ng-template #pais>
                                     <div class="d-flex flex-column align-items-center justify-content-center overflow-auto">                                        
-                                        <img [style.width.px]="150" flag [src]="this.detallePais.bandera" class="border mt-4" style="border-radius: 10px; border: 2px solid black;" >
+                                        <img [style.width.px]="150" flag [src]="detallePais.bandera" class="border mt-4" style="border-radius: 10px; border: 2px solid black;" >
                                         <p><strong>Pais: {{detallePais.nombre}} </strong></p>                                    
                                     </div>
                                 </ng-template>
-                                <app-choferes-pais-chofer>                            
+                                <app-choferes-paises>                            
                                     
                                     <ng-container [ngTemplateOutlet]="pais"></ng-container>
                                                                         
-                                </app-choferes-pais-chofer>                            
+                                </app-choferes-paises>
 
                             </ng-container>
                         </div>
