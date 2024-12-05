@@ -16,22 +16,7 @@
                 </small>
             </ng-container>
         </div>
-        <!-- Email -->
-        <!-- <div class="form-group row">
-            <label for="email"><strong>Email</strong></label>
-            <input type="text" class="form-control" formControlName="email" required>
-            <ng-container *ngIf="email?.invalid && email?.touched">
-            <small *ngIf="email?.hasError('noCoincide')" class="text-danger">
-                El email no coincide con el del usuario logueado.
-            </small>
-            <small *ngIf="email?.hasError('email')" class="text-danger">
-                Formato invalido.
-            </small>
-            <small *ngIf="email?.hasError('required')" class="text-danger">
-                El campo es obligatorio.
-            </small>
-            </ng-container>
-        </div> -->
+        
         <div class="form-group row">
             <!-- Edad -->
             <div class="col-md-6">
@@ -50,12 +35,13 @@
               </ng-container>           
             </div>                     
           </div>
-        <button type="submit" class="btn btn-primary mt-2 form-control" [disabled]="form.invalid">Registrar</button>
+        <button type="submit" class="btn btn-primary mt-2 form-control" [disabled]="form.invalid">Aceptar y Go Home</button>
     </form>
     <div *ngIf="showMensaje" class="mensaje" >
         <div class="d-flex">                    
         <app-mensaje [mensaje]="message"></app-mensaje>
         </div>        
     </div>
+    <!-- <button class="btn btn-sm btn-outline-secondary me-2" type="button" (click)="goHome()">Home</button> -->
 </div>
   

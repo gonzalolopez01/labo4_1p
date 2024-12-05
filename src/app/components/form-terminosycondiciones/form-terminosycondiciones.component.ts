@@ -104,4 +104,8 @@ export class FormTerminosycondicionesComponent {
   closeToast(): void {
     this.showMensaje = false;
   }
+
+  goHome(){
+    this.route.navigate(['home']);
+  }
 }
